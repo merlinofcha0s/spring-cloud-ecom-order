@@ -83,7 +83,7 @@ application:
     allow-credentials: false
     max-age: 300
   stripe:
-    api-key: dsdadsadsads
+    api-key: dsdfdsafds
     webhook-secret: dsdasdsdas
   auth:
     token-validity-in-seconds: 86400

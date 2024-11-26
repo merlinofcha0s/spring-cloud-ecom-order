@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @FeignClient(name = "ecom-product", path = "/api/products",
-        configuration = DefaultClientOpenFeignConfiguration.class)
+        configuration = DefaultClientOpenFeignConfiguration.class,
+        fallback = ProductServiceFallback.class)
 public interface ProductServiceFeign {
 
     @RequestMapping(value = "/by-public-ids", method = RequestMethod.GET)
