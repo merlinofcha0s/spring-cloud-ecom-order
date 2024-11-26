@@ -20,10 +20,10 @@ public class DefaultClientOpenFeignConfiguration {
         return Logger.Level.BASIC;
     }
 
-    @Bean
-    public Retryer defaultRetryer() {
-        return new Retryer.Default(300, 500, 3);
-    }
+//    @Bean
+//    public Retryer defaultRetryer() {
+//        return new Retryer.Default(300, 500, 3);
+//    }
 
     @Bean
     public ErrorDecoder errorDecoder() {
