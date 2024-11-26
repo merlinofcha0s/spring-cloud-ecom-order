@@ -1,0 +1,95 @@
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.security: INFO
+    org.hibernate.SQL: INFO
+    fr.plb.ecom_order: DEBUG
+    org.apache.hc.client5.http: INFO
+
+spring:
+  application:
+    name: ecom-order
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/ecommerce?schema=ecom_order
+    username: codecake
+    password: codecake
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+          batch_size: 25
+        query:
+          fail_on_pagination_over_collection_fetch: true
+          in_clause_parameter_padding: true
+        generate_statistics: false
+        order_updates: true
+        connection:
+          provider_disables_autocommit: true
+        order_inserts: true
+        default_schema: ecom_order
+    hibernate:
+      ddl-auto: validate
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+    default-schema: ecom_order
+    contexts: dev
+#    drop-first: true
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+server:
+  port: 8082
+
+
+application:
+  client-base-url: http://localhost:4200
+  cors:
+    allowed-origins: http://localhost:4200
+    allowed-methods: "*"
+    allowed-headers: "*"
+    exposed-headers: "*"
+    allow-credentials: false
+    max-age: 300
+  stripe:
+    api-key: dsdadsadsads
+    webhook-secret: dsdasdsdas
+  auth:
+    token-validity-in-seconds: 86400
+    username: admin@admin.com
+    password: P@ssw0rd123456!
+  jwt:
+    base64-secret: ZTlkOWNiMWU1ZjA1OTgwNDNkNWQwZDE0ZjgyMTFmMTY0ZTc5NDk4OTQxZjdmODlhNTMyODllYjEwNTAxMDYwZjBkZWY4ZGY1YTAxNDg5YTYxYzY0NWQ0ZGVjYzJmNTM2NGI0M2ZmMGU3NjA2MDBiMGMzMDU0ZTY4NWIzMTNjNzA
+  logstash:
+    host: localhost
+    port: 5000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
