@@ -67,7 +67,7 @@ spring:
         hc5:
           enabled: true
       circuitbreaker:
-        enabled: false
+        enabled: true
 
 server:
   port: 8082

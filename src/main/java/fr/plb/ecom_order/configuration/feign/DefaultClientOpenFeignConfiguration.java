@@ -20,10 +20,10 @@ public class DefaultClientOpenFeignConfiguration {
         return Logger.Level.BASIC;
     }
 
-//    @Bean
-//    public Retryer defaultRetryer() {
-//        return new Retryer.Default(300, 500, 3);
-//    }
+    @Bean
+    public Retryer defaultRetryer() {
+        return new Retryer.Default(300, 500, 3);
+    }
 
     @Bean
     public ErrorDecoder errorDecoder() {
@@ -32,13 +32,13 @@ public class DefaultClientOpenFeignConfiguration {
             if (status == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 log.error("Erreur d'appel {}, {}", methodKey, response.status());
                 FeignException feignException = FeignException.errorStatus(methodKey, response);
-//                return new RetryableException(
-//                        response.status(),
-//                        feignException.getMessage(),
-//                        response.request().httpMethod(),
-//                        feignException,
-//                        50L,
-//                        response.request());
+                return new RetryableException(
+                        response.status(),
+                        feignException.getMessage(),
+                        response.request().httpMethod(),
+                        feignException,
+                        50L,
+                        response.request());
             }
             return new ErrorDecoder.Default().decode(methodKey, response);
         });
