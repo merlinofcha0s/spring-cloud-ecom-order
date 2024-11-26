@@ -13,6 +13,7 @@ import fr.plb.ecom_order.infrastructure.secondary.service.product.ProductService
 import fr.plb.ecom_order.infrastructure.secondary.service.product.dto.ProductDTO;
 import fr.plb.ecom_order.infrastructure.secondary.service.stripe.StripeService;
 import fr.plb.ecom_order.infrastructure.secondary.service.user.AuthServiceFeign;
+import fr.plb.ecom_order.infrastructure.secondary.service.user.UserServiceFeign;
 import fr.plb.ecom_order.infrastructure.secondary.service.user.dto.RestUser;
 import fr.plb.ecom_order.infrastructure.secondary.service.user.vo.UserAddress;
 import org.springframework.data.domain.Page;

@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface ProductService {
 
+    // /by-public-ids GET
     List<ProductDTO> getProductsByPublicIdsIn(@RequestParam("publicIds") String publicIds);
 
+    // /update-product-quantity PUT
     void updateProductQuantity(List<OrderProductQuantity> orderProductQuantities);
 }

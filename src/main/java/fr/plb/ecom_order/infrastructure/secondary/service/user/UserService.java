@@ -11,8 +11,10 @@ import java.util.Optional;
 
 public interface UserService {
 
+    //get-by-public-ids GET
     List<RestUser> getUsersByPublicIds(@RequestParam String publicIds);
 
+    // /update-address POST
     void updateAddress(UserAddressToUpdate userAddressToUpdate);
 
     RestUser getAuthenticatedUser();
