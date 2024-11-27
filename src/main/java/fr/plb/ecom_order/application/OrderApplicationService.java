@@ -16,6 +16,8 @@ import fr.plb.ecom_order.infrastructure.secondary.service.user.AuthServiceFeign;
 import fr.plb.ecom_order.infrastructure.secondary.service.user.UserServiceFeign;
 import fr.plb.ecom_order.infrastructure.secondary.service.user.dto.RestUser;
 import fr.plb.ecom_order.infrastructure.secondary.service.user.vo.UserAddress;
+import io.micrometer.tracing.annotation.NewSpan;
+import io.micrometer.tracing.annotation.SpanTag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -50,7 +52,8 @@ public class OrderApplicationService {
     }
 
     @Transactional(readOnly = true)
-    public DetailCartResponse getCartDetails(DetailCartRequest detailCartRequest) {
+    @NewSpan("Get cart details")
+    public DetailCartResponse getCartDetails(@SpanTag("detail cart") DetailCartRequest detailCartRequest) {
         String publicIds = detailCartRequest
                 .items()
                 .stream()

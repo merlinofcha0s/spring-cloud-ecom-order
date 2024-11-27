@@ -4,7 +4,7 @@ spring:
       config:
         format: YAML
         fail-fast: true
-        profile-separator: '-'
+        profile-separator: ','
       host: localhost
       port: 8500
       discovery:

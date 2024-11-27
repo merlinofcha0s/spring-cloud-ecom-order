@@ -15,7 +15,7 @@ import java.util.List;
 
 @FeignClient(name = "ecom-product", path = "/api/products",
         configuration = DefaultClientOpenFeignConfiguration.class)
-@Retry(name = "order")
+//@Retry(name = "order")
 public interface ProductServiceFeign {
 
     @RequestMapping(value = "/by-public-ids", method = RequestMethod.GET)

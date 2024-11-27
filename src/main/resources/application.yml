@@ -81,7 +81,7 @@ resilience4j:
         waitDurationInOpenState: 15s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
-        slow-call-duration-threshold: 1s
+        slow-call-duration-threshold: 10ms
         slow-call-rate-threshold: 50
     instances:
       ProductServiceFeign:
